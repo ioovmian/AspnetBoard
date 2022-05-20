@@ -9,7 +9,7 @@ namespace Lecture.Lib.DataBase
 
         public MsSqlDapperHelper()
         {
-            _Conn = new SqlConnection("Data Source=116.120.58.105,1433; Initial Catalog=Test; User ID=stock; Password=stock1234;");
+            _Conn = new SqlConnection("Data Source=116.120.58.105,1433; Initial Catalog=Test; User ID=Test1; Password=study2022!!;");
         }
 
         #region Transaction

@@ -72,10 +72,15 @@ namespace Lecture.Controllers
         }
 
         [Authorize]
-        public IActionResult BoardWrite_Input([FromForm] BoardModel model)
+        public IActionResult BoardWrite_Input(string title, string content)
         {
-            model.Reg_User = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            model.Reg_Username = User.Identity.Name;
+            var model = new BoardModel
+            {
+                Title = title,
+                Content = content,
+                Reg_User = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                Reg_Username = User.Identity.Name
+            };
             model.Insert();
 
             return Redirect("/home/BoardList");
