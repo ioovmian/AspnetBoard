@@ -1,0 +1,57 @@
+﻿@model List<TestBModel>
+@{
+    var x = ViewBag.x;
+    var y = ViewData["y"] as string;
+
+    var lst = ViewData["list01"] as List<TestBModel>;
+
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>테스트입니다.</div>
+    <hr />
+
+    <div>
+        x : @x, y : @y
+    </div>
+    <hr />
+
+    @foreach (var item in lst)
+    {
+        <div> x : @item.X /////// y : @item.Y </div>
+    }
+    <hr />
+
+    @foreach (var item in Model)
+    {
+        <div> x : @item.X /////// y : @item.Y </div>
+    }
+    <hr />
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.X</td>
+                    <td>@item.Y</td>
+               </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
