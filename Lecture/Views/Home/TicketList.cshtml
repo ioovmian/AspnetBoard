@@ -18,6 +18,9 @@
     }
 }
 
+<!--Axios CDN-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <!-- ============================================================== -->
 <!-- Container fluid  -->
 <!-- ============================================================== -->
@@ -79,6 +82,121 @@
                         </form>
                     </div>
 
+                    <br />
+
+                    @*1. 순수 js*@
+                    <div>
+                        <div>
+                            <input id="product_Id01" type="number" value="@producttId" />
+                            <input id="category_Id01" type="number" value="@categoryId" />
+                            <button id="btn01" type="submit" class="btn btn-sm btn-primary">변경 전송</button>
+                        </div>
+                        <script>
+                            $("#btn01").click(function(){
+                                var productId = $("#product_Id01").val();
+                                var categoryId = $("#category_Id01").val();
+
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("post", "/home/TicketChange", true);
+                                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                                xhr.onreadystatechange = function(){
+                                    if(xhr.readyState == 4) {
+                                        if(xhr.status == 200){
+                                            alert("저장 성공");
+                                            location.reload();
+                                        }
+                                    }
+                                }
+                                xhr.send("Product_Id=" + productId + "&Category_Id=" + categoryId );
+                            });
+                        </script>
+                    </div>
+                    @*1. 순수 js 끝*@
+
+                    <br />
+
+                    @*2. jquery ajax 시작*@
+                    <div>
+                        <div>
+                            <input id="product_Id02" type="number" value="@producttId" />
+                            <input id="category_Id02" type="number" value="@categoryId" />
+                            <button id="btn02" type="submit" class="btn btn-sm btn-primary">변경 전송</button>
+                        </div>
+                        <script>
+                            $("#btn02").click(function(){
+                                var productId = $("#product_Id02").val();
+                                var categoryId = $("#category_Id02").val();
+
+                                // F12 -> Console 창에서 확인 가능
+                                console.log("시작1");
+
+                                // 비동기 통신
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/home/TicketChange01",
+                                    dataType: "json",
+                                    //data : {
+                                    //    "Product_Id" : productId,
+                                    //    "Category_Id" : categoryId
+                                    //},
+                                     data : {
+                                         model : {
+                                            "Product_Id" : productId,
+                                            "Category_Id" : categoryId
+                                         },
+                                         num : 1234
+                                    },
+                                    success: function (data) {
+                                        console.log("메시지출력3");
+                                        alert("응답값\r\n" + data.msg + "\r\nmsg2\r\n" + data.msg2);
+                                        location.reload();
+                                    },
+                                    error: function (xhr) {
+                                        alert(xhr.responseText);
+                                    }
+                                });
+                                console.log("끝2");
+                            });
+                        </script>
+                    </div>
+                    @*2. jquery ajax 끝*@
+
+                    <br />
+
+                    @*3. axios 시작*@
+                    <div>
+                        <div>
+                            <input id="product_Id03" type="number" value="@producttId" />
+                            <input id="category_Id03" type="number" value="@categoryId" />
+                            <button id="btn03" type="submit" class="btn btn-sm btn-primary">변경 전송3</button>
+                        </div>
+                        <script>
+                            $("#btn03").click(function(){
+                                var productId = $("#product_Id03").val();
+                                var categoryId = $("#category_Id03").val();
+
+                                // F12 -> Console 창에서 확인 가능
+                                console.log("시작1");
+                                axios.post("/home/TicketChange02", {
+                                    "Product_Id" : Number( productId),
+                                    "Category_Id" : Number(categoryId)
+                               }).then(function (response) {
+                                            // 자동으로 소문자로 변경
+                                            // Product_Name -> product_Name
+                                           alert("응답값1\r\n" + response.data.msg + "\r\nmsg2\r\n" + response.data.msg2.product_Name);
+                                           location.reload();
+
+                                }).catch(function(xhr){
+                                    alert(xhr.responseText);
+                                });
+                                console.log("끝2");
+                            });
+                        </script>
+                    </div>
+                    @*3. axios 끝*@
+
+                    <br />
+
                     <div class="table-responsive">
                         <table id="zero_config" class="table table-striped table-bordered no-wrap">
                             <thead>
@@ -94,17 +212,17 @@
                             </thead>
                             <tbody>
                                 @*@foreach (System.Data.DataRow row in dt.Rows)
-                                {
+                                    {
                                     <tr>
-                                        <td>@row["product_id"]</td>
-                                        <td>@row["product_name"]</td>
-                                        <td>@row["brand_id"]</td>
-                                        <td>@row["category_id"]</td>
-                                        <td>@row["model_year"]</td>
-                                        <td>@row["list_price"]</td>
-                                        <td></td>
+                                    <td>@row["product_id"]</td>
+                                    <td>@row["product_name"]</td>
+                                    <td>@row["brand_id"]</td>
+                                    <td>@row["category_id"]</td>
+                                    <td>@row["model_year"]</td>
+                                    <td>@row["list_price"]</td>
+                                    <td></td>
                                     </tr>
-                                }*@
+                                    }*@
                                 @foreach (var item in @Model)
                                 {
                                     <tr>

@@ -51,6 +51,28 @@ namespace Lecture.Controllers
             return Redirect("/home/TicketList");
         }
 
+
+        public IActionResult TicketChange01([FromForm] TicketModel model, int num)
+        {
+            model.Update();
+
+            //return Redirect("/home/TicketList");
+            return Json(new { msg = "굿굿굿 OK", msg2 = "123" });
+        }
+
+
+        public IActionResult TicketChange02([FromBody] TicketModel model)
+        {
+            //var sr = new StreamReader(Request.Body);
+            //var body = sr.ReadToEndAsync().GetAwaiter().GetResult();
+            model.Update();
+
+            var getModel = TicketModel.Get(model.Product_Id);
+            return Json(new { msg = "굿굿굿 OK1", msg2 = getModel });
+            //return Json(getModel);
+        }
+
+
         #endregion
 
         #region 게시판

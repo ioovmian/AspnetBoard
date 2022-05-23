@@ -1,4 +1,5 @@
 ﻿using Lecture.Lib.DataBase;
+using Newtonsoft.Json;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -29,6 +30,22 @@ FROM [production].[products]
                 return db.Query<TicketModel>(sql, null).ToList();
             }
         }
+
+        public static TicketModel Get(int idx)
+        {
+            var sql = @"SELECT *
+FROM 
+    [production].[products]
+WHERE
+    [product_id] = @Product_Id
+";
+
+            using (var db = new MsSqlDapperHelper())
+            {
+                return db.QuerySingle<TicketModel>(sql, new { Product_Id = idx });
+            }
+        }
+
 
         public int Update()
         {

@@ -10,6 +10,7 @@ namespace Lecture.Lib.DataBase
         public MsSqlDapperHelper()
         {
             _Conn = new SqlConnection("Data Source=116.120.58.105,1433; Initial Catalog=Test; User ID=Test1; Password=study2022!!;");
+            _Conn.Open();
         }
 
         #region Transaction
@@ -45,7 +46,7 @@ namespace Lecture.Lib.DataBase
 
         public int Execute(string sql, object param)
         {
-            return Dapper.SqlMapper.Execute(_Conn, sql, param);
+            return Dapper.SqlMapper.Execute(_Conn, sql, param, _Transaction);
         }
 
 
