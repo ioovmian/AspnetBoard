@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        안녕하세요. API TEST 페이지입니다.
+        @*@RenderBody()*@
+    </div>
+
+    <div>
+        <div>
+            <button id="btn01" type="submit" class="btn btn-sm btn-primary">Get WebApi Test</button>
+        </div>
+
+        <script>
+            $("#btn01").click(function(){
+
+                 $.ajax({
+                    type: "get",
+                    url: "https://localhost:7087/WeatherForecast",
+                    dataType: "json",
+                    data: {
+                    },
+                    success: function (data) {
+                        console.log("성공");
+                        console.log(data);
+                    },
+                    error: function (xhr) {
+                        console.log("실패");
+                        console.log(xhr.responseJSON.message);
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    <br />
+
+    <div>
+        <div>
+            <button id="btn02" type="submit" class="btn btn-sm btn-primary">Post WebApi Test</button>
+        </div>
+
+        <script>
+            $("#btn02").click(function(){
+
+                 $.ajax({
+                    type: "post",
+                    url: "https://localhost:7087/WeatherForecast",
+                    dataType: "json",
+                    data: {
+                    },
+                    success: function (data) {
+                        console.log("성공");
+                        console.log(data);
+                    },
+                    error: function (xhr) {
+                        console.log("실패");
+                        console.log(xhr.responseJSON.message);
+                    }
+                });
+            });
+        </script>
+    </div>
+    <br />
+
+    <div>
+        <div>
+            <button id="btn03" type="submit" class="btn btn-sm btn-primary">Put WebApi Test</button>
+        </div>
+
+        <script>
+            $("#btn03").click(function(){
+
+                 $.ajax({
+                    type: "put",
+                    url: "https://localhost:7087/WeatherForecast",
+                    dataType: "json",
+                    data: {
+                    },
+                    success: function (data) {
+                        console.log("성공");
+                        console.log(data);
+                    },
+                    error: function (xhr) {
+                        console.log("실패");
+                        console.log(xhr.responseJSON.message);
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    <br/>
+
+     <div>
+        <div>
+            <button id="btn04" type="submit" class="btn btn-sm btn-primary">Delete WebApi Test</button>
+        </div>
+
+        <script>
+            $("#btn04").click(function(){
+                
+                console.log("delete");
+
+                 $.ajax({
+                    type: "delete",
+                    url: "https://localhost:7087/WeatherForecast",
+                    dataType: "json",
+                    data: {
+                        "key" : 12
+                    },
+                    success: function (data) {
+                        console.log("성공");
+                        console.log(data);
+                    },
+                    error: function (xhr) {
+                        console.log("실패");
+                        console.log(xhr.responseJSON.message);
+                    }
+                });
+            });
+        </script>
+    </div>
+
+</body>
+</html>

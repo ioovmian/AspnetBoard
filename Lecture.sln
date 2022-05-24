@@ -5,7 +5,11 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lecture", "Lecture\Lecture.csproj", "{EE334D9C-2246-4CD6-A4F3-9F7A977B071C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lecture.Lib", "Lecture.Lib\Lecture.Lib.csproj", "{1B7B4D47-C5E4-4407-97E4-0368B4AB9E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lecture.Lib", "Lecture.Lib\Lecture.Lib.csproj", "{1B7B4D47-C5E4-4407-97E4-0368B4AB9E07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lecture.HomeWebApi", "Lecture.HomeWebApi\Lecture.HomeWebApi.csproj", "{E18A3986-FF46-4947-8654-F41644D722C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lecture.Console", "Lecture.Console\Lecture.Console.csproj", "{1773F4B1-658E-46A7-A5D5-C6C205071D27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{1B7B4D47-C5E4-4407-97E4-0368B4AB9E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B7B4D47-C5E4-4407-97E4-0368B4AB9E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B7B4D47-C5E4-4407-97E4-0368B4AB9E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E18A3986-FF46-4947-8654-F41644D722C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E18A3986-FF46-4947-8654-F41644D722C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E18A3986-FF46-4947-8654-F41644D722C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E18A3986-FF46-4947-8654-F41644D722C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1773F4B1-658E-46A7-A5D5-C6C205071D27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1773F4B1-658E-46A7-A5D5-C6C205071D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1773F4B1-658E-46A7-A5D5-C6C205071D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1773F4B1-658E-46A7-A5D5-C6C205071D27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

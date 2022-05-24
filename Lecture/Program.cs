@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -41,8 +42,11 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapHub<Lecture.Hubs.ChatHub>("/chatHub"); // 즉 http가 아니 wss 의 웹 소켓을 의미
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 
 app.Run();
